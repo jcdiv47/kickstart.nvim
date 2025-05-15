@@ -1,0 +1,31 @@
+{
+  "align": {
+    "prefix": "align",
+    "body": [
+      "\\begin{align*}",
+      "$1",
+      "\\end{align*}"
+    ],
+    "description": "Align block"
+  },
+  "frac": {
+    "prefix": "frac",
+    "body": [
+      "\\frac{$1}{$2}"
+    ]
+  },
+  "sum with sub (and super) scripts": {
+    "prefix": "sumsub",
+    "body": [
+      "\\sum_{$1}^{$2}\\{$3\\}"
+    ],
+    "description": "Sum with sub (and super) sripts"
+  },
+  "sum": {
+    "prefix": "sum",
+    "body": [
+      "\\sum\\{$1 \\}"
+    ],
+    "description": "Sum with sub (and super) sripts"
+  }
+}
