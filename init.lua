@@ -237,6 +237,9 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd>w<CR><ESC>')
 -- Use cmd+s to save to buffer in macos
 vim.keymap.set({ 'n', 'i', 'v' }, '<D-s>', '<cmd>w<CR><ESC>')
 
+-- Reload current buffer for the changes to take effect
+vim.keymap.set('n', '<leader>xx', '<cmd>source %<CR>', { desc = 'Reload current buffer for the changes to take effect' })
+
 -- Copy and paste/yank
 -- TODO: Figure out the keymaps
 -- -- Delete single character without copying into register
@@ -973,6 +976,14 @@ require('lazy').setup({
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = true, auto_show_delay_ms = 50 },
+      },
+
+      cmdline = {
+        keymap = {
+          -- recommended, as the default keymap will only show and select the next item
+          ['<Tab>'] = { 'show', 'accept' },
+        },
+        completion = { menu = { auto_show = true } },
       },
 
       sources = {

@@ -46,6 +46,11 @@ return {
         b = { fg = colors.color2, bg = mocha.base },
         c = { fg = colors.color2, bg = mocha.base },
       },
+      command = {
+        a = { fg = colors.color0, bg = colors.color6, gui = 'bold' },
+        b = { fg = colors.color2, bg = mocha.base },
+        c = { fg = colors.color2, bg = mocha.base },
+      },
     }
 
     local mode = {
