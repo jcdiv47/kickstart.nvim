@@ -900,9 +900,12 @@ require('lazy').setup({
         version = '2.*',
         -- load custom snippets for luasnip
         config = function()
-          -- FIXME: fix snippets
-          require('luasnip.loaders.from_vscode').lazy_load { paths = { './snippets' } }
-          require('luasnip.loaders.from_lua').lazy_load { paths = { './luasnip/snippets' } }
+          require('luasnip.loaders.from_lua').lazy_load {
+            paths = {
+              './luasnip/latex/',
+              './luasnip/obsidian/',
+            },
+          }
         end,
         build = (function()
           -- Build Step is needed for regex support in snippets.
