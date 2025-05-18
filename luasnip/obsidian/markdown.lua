@@ -57,10 +57,24 @@ local callout_snip = s('callout', {
   i(3, 'insert callout content...'),
 })
 
+local link_snip = s('link', {
+  t '[',
+  i(1, 'insert title...'),
+  t ']',
+  t '(',
+  i(2, 'insert link...'),
+  t ')',
+})
+
+-- TODO: investigate how I can use the link_snip snippet here, instead of copying the content
 local readme_snip = s('readme', {
   t { '> [!readme] Readme', '> ' },
-  t { '', '> - ' },
-  i(1, 'insert readme list...'),
+  t { '', '> - [' },
+  i(1, 'insert title...'),
+  t ']',
+  t '(',
+  i(2, 'insert link...'),
+  t ')',
 })
 
 return {
@@ -75,12 +89,5 @@ return {
     t { 'tags:', '  - ' },
     i(1, 'insert tags here...'),
   }),
-  s('link', {
-    t '[',
-    i(1, 'insert title...'),
-    t ']',
-    t '(',
-    i(2, 'insert link...'),
-    t ')',
-  }),
+  link_snip,
 }

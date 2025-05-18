@@ -34,6 +34,9 @@ return {
     -- vim.cmd(string.format([[highlight Headline6Fg guifg=%s gui=bold]], colors.color6_bg))
 
     require('render-markdown').setup {
+      callout = {
+        readme = { raw = '[!readme]', rendered = '󰋽 Note', highlight = 'RenderMarkdownInfo', category = 'github' },
+      },
       completions = { lsp = { enabled = true } },
       heading = {
         setext = false,
