@@ -186,6 +186,12 @@ vim.o.swapfile = false
 -- 2: always
 vim.o.showtabline = 0
 
+vim.filetype.add {
+  extension = {
+    mdx = 'markdown',
+  },
+}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -229,13 +235,16 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Use jk to escape
 vim.keymap.set('i', 'jk', '<ESC>')
+-- Use jj to escape and save
+vim.keymap.set('i', 'jj', '<ESC><cmd>w<CR>')
 -- Use jk to exit terminal mode
 vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Use ctrl+s to save to buffer in windows and linux
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<cmd>w<CR><ESC>')
--- Use cmd+s to save to buffer in macos
 vim.keymap.set({ 'n', 'i', 'v' }, '<D-s>', '<cmd>w<CR><ESC>')
+vim.keymap.set({ 'n', 'i', 'v' }, '<M-s>', '<cmd>w<CR><ESC>')
+vim.keymap.set({ 'n', 'i', 'v' }, '<A-s>', '<cmd>w<CR><ESC>')
 
 -- Reload current buffer for the changes to take effect
 vim.keymap.set('n', '<leader>xx', '<cmd>source %<CR>', { desc = 'Reload current buffer for the changes to take effect' })
@@ -268,6 +277,8 @@ vim.keymap.set('n', '<leader>bo', '<cmd>enew<CR>', { desc = 'Open new [B]uffer' 
 vim.keymap.set('n', '<leader>bx', '<cmd>bd<CR>', { desc = 'Close current [B]uffer' }) -- close current buffer
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', { desc = 'Go to next [B]uffer' }) --  go to next buffer
 vim.keymap.set('n', '<leader>bp', '<cmd>bprev<CR>', { desc = 'Go to previous [B]uffer' }) --  go to previous buffer
+vim.keymap.set('n', 'gb', '<cmd>bnext<CR>', { desc = 'Go to next [B]uffer' }) --  go to next buffer
+vim.keymap.set('n', 'gB', '<cmd>bprev<CR>', { desc = 'Go to previous [B]uffer' }) --  go to previous buffer
 vim.keymap.set('n', ']b', ':bnext<CR>', { desc = 'Navigate to the next [B]uffer' })
 vim.keymap.set('n', '[b', ':bprev<CR>', { desc = 'Navigate to the previous [B]uffer' })
 

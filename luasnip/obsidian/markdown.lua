@@ -57,6 +57,17 @@ local callout_snip = s('callout', {
   i(3, 'insert callout content...'),
 })
 
+-- "note", "tip", "caution", "danger"
+local aside_snip = s('aside', {
+  t '<Aside type="',
+  c(1, { t { 'note' }, t { 'tip' }, t { 'caution' }, t { 'danger' } }),
+  t '" title="',
+  i(2, ''),
+  t { '">', '', '' },
+  i(3, ''),
+  t { '', '', '</Aside>', '' },
+})
+
 local link_snip = s('link', {
   t '[',
   i(1, 'insert title...'),
@@ -84,6 +95,7 @@ return {
   frontmatter_snip,
   detail_snip,
   callout_snip,
+  aside_snip,
   readme_snip,
   s('tag', {
     t { 'tags:', '  - ' },
