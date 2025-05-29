@@ -84,6 +84,14 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  pattern = { '*.mdx' },
+  callback = function()
+    local buf = vim.api.nvim_get_current_buf()
+    vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')
+  end,
+})
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -778,6 +786,11 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
+        astro = {},
+        marksman = {},
+        mdx_analyzer = {
+          filetypes = { 'mdx' },
+        },
         ruff = {
           init_options = {
             settings = {
@@ -794,7 +807,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
         --
 
         tinymist = {
@@ -887,6 +900,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
+        markdown = { 'markdownlint' },
         -- python = { "isort", "black" },
         python = {
           -- To fix auto-fixable lint errors.
@@ -918,6 +932,7 @@ require('lazy').setup({
             paths = {
               './luasnip/latex/',
               './luasnip/obsidian/',
+              './luasnip/starlight/',
             },
           }
         end,
