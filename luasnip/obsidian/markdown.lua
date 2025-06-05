@@ -35,11 +35,11 @@ local frontmatter_snip = s('frontmatter', {
 })
 
 local detail_snip = s('detail', {
-  t { '<details><summary>' },
-  i(1, 'insert summary here...'),
+  t { '<details>', '<summary>' },
+  i(1, ''),
   t { '</summary>', '', '' },
-  i(2, 'insert details here...'),
-  t { '', '</details>' },
+  i(2, ''),
+  t { '', '', '</details>' },
 })
 
 local callout_snip = s('callout', {
