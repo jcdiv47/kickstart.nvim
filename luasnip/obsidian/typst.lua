@@ -7,10 +7,13 @@ local c = ls.choice_node
 local fmt = require('luasnip.extras.fmt').fmt
 local fmta = require('luasnip.extras.fmt').fmta
 
+local codeblock_snip = s('code', {
+  t { '#line(length: 100%)', '```python', '' },
+  i(1, ''),
+  t { '', '```' },
+  i(2),
+})
+
 return {
-  s('import', {
-    t 'import { ',
-    i(1),
-    t " } from '@astrojs/starlight/components';",
-  }),
+  codeblock_snip,
 }

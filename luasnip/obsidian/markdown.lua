@@ -42,30 +42,16 @@ local detail_snip = s('detail', {
   t { '', '', '</details>' },
 })
 
-local callout_snip = s('callout', {
-  t '> [!',
-  c(1, {
-    t { 'info' },
-    t { 'tip' },
-    t { 'warn' },
-    t { 'question' },
-    t { 'quote' },
-  }),
-  t '] ',
-  i(2, 'insert callout title...'),
-  t { '', '> ', '> ' },
-  i(3, 'insert callout content...'),
+local approach_snip = s('approach', {
+  t { '<details>', '<summary>Approach</summary>', '', '' },
+  i(1, ''),
+  t { '', '', '</details>' },
 })
 
--- "note", "tip", "caution", "danger"
-local aside_snip = s('aside', {
-  t '<Aside type="',
-  c(1, { t { 'note' }, t { 'tip' }, t { 'caution' }, t { 'danger' } }),
-  t '" title="',
-  i(2, ''),
-  t { '">', '', '' },
-  i(3, ''),
-  t { '', '', '</Aside>', '' },
+local solution_snip = s('solution', {
+  t { '<details>', '<summary>Solution</summary>', '', '```python', '' },
+  i(1, ''),
+  t { '', '```', '', '</details>' },
 })
 
 local link_snip = s('link', {
@@ -94,8 +80,8 @@ return {
   }),
   frontmatter_snip,
   detail_snip,
-  callout_snip,
-  aside_snip,
+  approach_snip,
+  solution_snip,
   readme_snip,
   s('tag', {
     t { 'tags:', '  - ' },

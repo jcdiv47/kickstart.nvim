@@ -110,7 +110,7 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -165,6 +165,7 @@ vim.o.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.o.cursorline = true
+vim.o.cursorlineopt = 'number'
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
@@ -241,10 +242,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- [[ Custom key mappings ]]
 
--- Use jk to escape
-vim.keymap.set('i', 'jk', '<ESC>')
--- Use jj to escape and save
-vim.keymap.set('i', 'jj', '<ESC><cmd>w<CR>')
+-- Use jj to escape
+vim.keymap.set('i', 'jj', '<ESC>')
+-- Use jk to escape and save
+vim.keymap.set('i', 'jk', '<ESC><cmd>w<CR>')
 -- Use jk to exit terminal mode
 vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
@@ -296,11 +297,6 @@ vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split [W]indow [H]orizonta
 vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make split [W]indows [E]qual size' }) -- Make split windows equal width & height
 vim.keymap.set('n', '<leader>wx', '<cmd>close<CR>', { desc = 'Close current split [W]indow' }) -- Close current split window
 
--- Fuzzy finder for git dirty files
-vim.keymap.set('n', '<leader>sb', function()
-  return require('telescope.builtin').lsp_document_symbols { symbol_width = 30 }
-end, { desc = '[S]earch LSP document sym[B]ols' })
-
 vim.keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = 'Clear search highlights', silent = true })
 
 -- Search todos in Telescope
@@ -316,6 +312,9 @@ end, { desc = 'Previous todo comment' })
 vim.keymap.set('n', '<leader>sb', function()
   return require('telescope.builtin').lsp_document_symbols { symbol_width = 30 }
 end, { desc = '[S]earch LSP document sym[B]ols' })
+vim.keymap.set('n', '<leader>sB', function()
+  return require('telescope.builtin').lsp_workspace_symbols { symbol_width = 30 }
+end, { desc = '[S]earch LSP workspace sym[B]ols' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -787,7 +786,7 @@ require('lazy').setup({
         -- gopls = {},
         -- pyright = {},
         astro = {},
-        marksman = {},
+        markdown_oxide = {},
         mdx_analyzer = {
           filetypes = { 'mdx' },
         },
@@ -900,7 +899,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        markdown = { 'markdownlint' },
+        -- markdown = { 'markdownlint' },
         -- python = { "isort", "black" },
         python = {
           -- To fix auto-fixable lint errors.
@@ -932,7 +931,6 @@ require('lazy').setup({
             paths = {
               './luasnip/latex/',
               './luasnip/obsidian/',
-              './luasnip/starlight/',
             },
           }
         end,
